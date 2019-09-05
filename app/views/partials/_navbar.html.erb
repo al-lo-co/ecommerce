@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container"> <a class="navbar-brand text-primary" href="#">
+        <i class="fa d-inline fa-lg fa-circle-o"></i>
+        <b> Commerce</b>
+      </a> <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar5">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar5">
+        <ul class="navbar-nav mr-auto">
+          <li> <a><%= link_to "Inicio", root_path, class:"nav-item nav-link" %></a> </li>
+          <li> <a><%= link_to "Compras", home_purchases_path, class:"nav-item nav-link" %></a> </li>
+          <li> <a><%= link_to "Historial", home_history_path, class:"nav-item nav-link" %></a> </li>
+          <li> <a><%= link_to "Favoritos", home_favorites_path, class:"nav-item nav-link" %></a> </li>
+          <li class="nav-item dropdown" contenteditable="false"> <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorías</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"><br> </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0"> <input class="form-control mr-sm-2" type="text" placeholder="Search"> <button class="btn btn-outline-success my-sm-0 my-2 mr-1" type="submit">Search</button> </form><a class="btn btn-default navbar-btn btn-primary my-2 mx-1"><i class="fa fa-shopping-cart my-2"></i></a>
+        <%if user_signed_in?%>
+          <a><i class="fa fa-user fa-fw my-2"></i><%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class:"btn btn-default navbar-btn btn-primary my-2 mx-1" %></a>
+        <%else%>
+          <a><%= link_to "Ingresar", new_user_session_path, class:"btn btn-default navbar-btn btn-primary my-2 mx-1" %></a>
+          <a> <%= link_to "Registro", new_user_registration_path, class:"btn btn-default navbar-btn btn-primary my-2 mx-1" %></a>
+        <%end%>
+      </div>
+    </div>
+  </nav>
