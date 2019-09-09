@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'home/reputation'
   get 'home/sales'
   get 'home/products'
+  get 'home/administrator'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "home#index"
 end

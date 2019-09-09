@@ -53,7 +53,7 @@ gem 'jquery-rails'
 
 gem "font-awesome-rails"
 
-gem "cancan"
+gem 'cancancan'
 
 group :development, :test do
   gem "railroady", "~> 1.5.3"
