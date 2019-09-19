@@ -1,0 +1,48 @@
+<div class="container py-5">
+  <div class="row my-5">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <p>
+            <strong>P name:</strong>
+            <%= @product.p_name %>
+          </p>
+
+          <p>
+            <strong>P description:</strong>
+            <%= @product.p_description %>
+          </p>
+
+          <p>
+            <strong>P price:</strong>
+            <%= @product.p_price %>
+          </p>
+
+          <p>
+            <strong>P quantify:</strong>
+            <%= @product.p_quantify %>
+          </p>
+
+          <p>
+            <strong>P send:</strong>
+            <%= @product.p_send %>
+          </p>
+
+          <p>
+            <strong>P available:</strong>
+            <%= @product.p_available %>
+          </p>
+
+          <p>
+            <strong>User:</strong>
+            <%= @product.user %>
+          </p>
+          <% if can? :edit, @product %>
+            <%= link_to 'Edit', edit_product_path(@product), class:"btn btn-primary" %> |
+            <%= link_to 'Back', products_path, class:"btn btn-secundary" %>
+          <%end%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

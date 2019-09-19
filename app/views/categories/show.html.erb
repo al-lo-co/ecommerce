@@ -1,19 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+    <div class="offset-md-1.col-md-10">
+      <div class="card">
+        <div class="card-body">
+          <p>
+            <strong>Name:</strong>
+            <%= @category.name %>
+          </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
+          <p>
+            <strong>Description:</strong>
+            <%= @category.description %>
+          </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @category.description %>
-</p>
+          <p>
+            <strong>C img:</strong>
+            <%= image_tag @category.c_img.url(:thumb) %>
+          </p>
 
-<p>
-  <strong>C img:</strong>
-  <%= @category.c_img %>
-</p>
-
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+          <% if can? :manage, @category%>
+            <%= link_to 'Edit', edit_category_path(@category) %> |
+            <%= link_to 'Back', categories_path %>
+          <%end%>
+        </div>
+      </div>
+    </div>
+</div>

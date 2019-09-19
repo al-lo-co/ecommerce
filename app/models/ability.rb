@@ -2,13 +2,14 @@
 
 class Ability
   include CanCan::Ability
+  include PermissionsConcern
 
   def initialize(user)
     user ||= User.new
     if user.is_admin?
-      can :manage, Category
-      else
-      can :read, :all
+      can :manage, [Category, Product]
+    elsif user.is_normal_user?
+      can :read, [Category, Product]
     end
 
     # Define abilities for the passed in user here. For example:
