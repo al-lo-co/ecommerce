@@ -5,11 +5,11 @@ module PermissionsConcern extend ActiveSupport::Concern
   end
 
   def is_admin?
-  	if self.permission_level.nil?
-  		self.permission_level = 0
-  	else
-      self.permission_level >= 9
-    end
+    self.permission_level >= 9
+  end
+
+  def is_anonymous?
+    self.permission_level.nil?
   end
 
 end

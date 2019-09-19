@@ -1,9 +1,31 @@
+# == Schema Information
+#
+# Table name: products
+#
+#  id            :integer          not null, primary key
+#  p_name        :string
+#  p_description :text
+#  p_price       :decimal(, )
+#  p_quantify    :integer
+#  p_send        :decimal(, )
+#  p_available   :boolean
+#  user_id       :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
 class Product < ApplicationRecord
   belongs_to :user
   has_many :has_categories, :dependent => :destroy
   has_many :categories, through: :has_categories, :dependent => :destroy
   after_create :save_categories
   validate :valide_categories
+
+  #validaciones
+  validates :p_name, presence: true, length: {minimum: 10, too_short: "Minimo son %{count} caracteres."}
+  validates :p_description, presence: true, length: {minimum: 50, too_short: "Minimo son %{count} caracteres."}
+  validates :p_price, presence: true, :numericality => true
+  validates :p_send, presence: true, :numericality => true
 
   def categories=(value)
   	@categories = value

@@ -39,7 +39,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :street
       t.string :uid
       t.string :provider
-      t.integer :permission_level
+      t.integer :permission_level, default: 0
       t.attachment :img
 
       t.timestamps null: false

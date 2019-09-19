@@ -30,7 +30,7 @@
                   <td><%= product.p_quantify %></td>
                   <td><%= product.p_send %></td>
                   <td><%= product.p_available %></td>
-                  <td><%= product.user %></td>
+                  <td><%= product.user.email %></td>
                   <td>
                     <%product.categories.each do |category|%>
                       <%= link_to category.name, category %>
@@ -47,7 +47,7 @@
           <br>
 
           <%= link_to 'New Product', new_product_path, class:"btn btn-primary" %>
-          <%= link_to 'Atras',  home_index_path,  class:"btn btn-primary" %>
+          <%= link_to 'Atras',  home_administrator_path,  class:"btn btn-primary" %>
         </div>
       </div>
     </div>
