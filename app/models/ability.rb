@@ -7,9 +7,7 @@ class Ability
   def initialize(user)
 
     user ||= User.new
-    if user.is_anonymous?
-      render "devise/sessions/new"
-    elsif user.is_normal_user?
+    if user.is_anonymous? || user.is_normal_user?
       can :read, [Category, Product]
     elsif user.is_admin?
       can :manage, [Category, Product]       

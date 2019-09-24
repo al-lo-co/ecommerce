@@ -1,35 +1,52 @@
-<div class="container">
-    <div class="offset-md-1.col-md-10">
+<div class="container my-5">
+  <div class="row">
+    <div class="col-12">
       <div class="card">
         <div class="card-body">
-          <p>
-            <strong>Name:</strong>
-            <%= @category.name %>
-          </p>
+          <div class="row">
+            <div class="col-9">
+              <div class="row">
+                <div class="col-12">
+                  <p>
+                    <strong>Name:</strong>
+                    <%= @category.name %>
+                  </p>
 
-          <p>
-            <strong>Description:</strong>
-            <%= @category.description %>
-          </p>
+                  <p>
+                    <strong>Description:</strong>
+                    <%= @category.description %>
+                  </p>
 
-          <p>
-            <strong>Imagen:</strong>
-            <%= image_tag @category.c_img.url %>
-          </p>
+                  <p>
+                    <strong>Imagen:</strong>
+                    <%= image_tag @category.c_img.url %>
+                  </p>
 
-          <p>
-            <% @category.products.each do |product| %>
-              <%= link_to product.p_name, product %>
-            <%end%>
-          </p>
-
-          <% if can? :update, @category%>
-            <%= link_to 'Edit', edit_category_path(@category) %> |
-            <%= link_to 'Back', categories_path %>
-          <%end%>
-
-          
+                  <% if can? :update, @category%>
+                    <%= link_to 'Edit', edit_category_path(@category) %> |
+                    <%= link_to 'Back', categories_path %>
+                  <%end%>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+  <div class="row">
+    <% @category.products.each do |product| %>
+      <div class="col-md-3 my-5">
+        <div class="card h-100">
+          <div class="card-body">
+            <%= link_to product.p_name, product %>
+            <%= "Descripción de producto: #{truncate(product.p_description, length:150)}" %><br>
+          </div>
+        </div>     
+      </div>
+    <%end%>
+  </div>
 </div>
+
+
+       

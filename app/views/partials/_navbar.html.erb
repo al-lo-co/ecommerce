@@ -20,7 +20,14 @@
             </div>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0"> <input class="form-control mr-sm-2" type="text" placeholder="Search"> <button class="btn btn-outline-success my-sm-0 my-2 mr-1" type="submit">Search</button> </form><a class="btn btn-default navbar-btn btn-primary my-2 mx-1"><i class="fa fa-shopping-cart my-2"></i></a>
+        <%=form_tag "/home/search", method: :get, class:"form-inline m-8" do%>
+        
+          <%= text_field_tag :search, params[:search], html: {require:true}, placeholder:"Search", class:"form-control mr-sm-2"%>
+          <%= submit_tag "Search",:search => nil, class:"btn btn-outline-success my-sm-0 my-2 mr-1"%>
+        <%end%>
+        <a class="btn btn-default navbar-btn btn-primary my-2 mx-1">
+          <i class="fa fa-shopping-cart my-2"></i>
+        </a>
         <%if user_signed_in?%>
           <a><i class="fa fa-user fa-fw my-2"></i><%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class:"btn btn-default navbar-btn btn-primary my-2 mx-1" %></a>
         <%else%>

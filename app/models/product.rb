@@ -27,6 +27,7 @@ class Product < ApplicationRecord
   validates :p_price, presence: true, :numericality => true
   validates :p_send, presence: true, :numericality => true
 
+
   def categories=(value)
   	@categories = value
   end

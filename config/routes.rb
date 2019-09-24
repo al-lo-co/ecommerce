@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :products
   resources :categories
   devise_for :users
+  get 'home/search'
   get 'home/index'
   get 'home/purchases'
   get 'home/history'

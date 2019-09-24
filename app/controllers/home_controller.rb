@@ -22,6 +22,11 @@ class HomeController < ApplicationController
   end
 
   def products
+    @products = Product.all
+  end
+
+  def search
+    @products = Product.where("p_name like :query", query: "%#{params[:search]}%")
   end
 
 end
