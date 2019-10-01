@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   before_action :authenticate_user!, except: :index
+  before_action :set_products, only: [:products, :index]
 
   def index
   end
@@ -22,11 +23,15 @@ class HomeController < ApplicationController
   end
 
   def products
-    @products = Product.all
   end
 
   def search
     @products = Product.where("p_name like :query", query: "%#{params[:search]}%")
+  end
+
+  private
+  def set_products
+    @products = Product.paginate(page: params[:page], per_page: 10)
   end
 
 end

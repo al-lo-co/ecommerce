@@ -2,22 +2,21 @@
   <div class="container">
     <div class="row">
       <%= render "partials/panel"%>
-      <div class="col-md-9">
-        <div class="card  p-2" >
-          <div class="card-body">
-            <h1 class="mb-3 text-center">Resumen</h1>
-            <h3 class="mb-2 text-center">Productos</h3>
-            <ul class="list-group">
-              <li class="list-group-item d-flex justify-content-between align-items-center">Disponibles <span class="badge badge-pill badge-primary">4</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center"> Agotados <span class="badge badge-primary badge-pill">2</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center"> Vendidos <span class="badge badge-primary badge-pill">1</span>
-              </li>
-            </ul>
-          </div>
+      <% if !current_user.is_admin? %>
+        <div class="col-md-9">     
+          <% @products.each do |product|%>
+            <div class="card  p-2" >
+              <div class="card-body">
+                <%= link_to product.p_name, product%> 
+                <%= truncate(product.p_description, length:150)%><br>
+              </div>
+            </div>
+          <%end%>
         </div>
-      </div>
+        <%= will_paginate @products %>
+      <%else%>
+        <%render "index_admin"%>
+      <%end%>        
     </div>
   </div>
 </div>
