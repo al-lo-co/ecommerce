@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <%= render "partials/panel"%>
-      <% if !current_user.is_admin? %>
+      <% if !current_user %>
         <div class="col-md-9">     
           <% @products.each do |product|%>
             <div class="card  p-2" >
